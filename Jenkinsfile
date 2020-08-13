@@ -14,9 +14,9 @@ pipeline {
            }
            steps {
                script {
-                   app = docker.build("phrenzy/train-schedule")
-                   app.inside {
-                       sh 'echo $(curl localhost:8080)'
+{
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
                    }
                }
             }
