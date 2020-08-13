@@ -8,18 +8,5 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image') {
-           when {
-              branch 'master'
-           }
-           steps {
-               script {
-{
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customImage.push()555
-                   }
-               }
-            }
-        }          
     }
 }
