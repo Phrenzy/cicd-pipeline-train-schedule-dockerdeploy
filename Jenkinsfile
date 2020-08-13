@@ -14,11 +14,12 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.run("hello-world")
-
+                    app = docker.build("phrenzy/train-schedule")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
                 }
             }
         }
     }
 }
-            
